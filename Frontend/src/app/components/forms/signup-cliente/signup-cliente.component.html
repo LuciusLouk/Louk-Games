@@ -1,0 +1,339 @@
+<section>
+  <div class="card-louk m-4 p-5">
+    <form #clienteForm="ngForm">
+      <h1 class="text-center">Registro Cliente</h1>
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group row">
+            <h3>Credenciales de Usuario</h3>
+            <div class="col-12 group-louk">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control input-louk"
+                id="email"
+                [(ngModel)]="cliente.email"
+                name="email"
+                #email="ngModel"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              />
+              <i class="fa-solid fa-envelope form-icon"></i>
+            </div>
+            <!--VALIDACION EMAIL-->
+            <div class="col-12 group-louk">
+              <div
+                *ngIf="email.invalid && (email.touched || email.dirty)"
+                class="alert alert-danger"
+              >
+                <div *ngIf="email.errors?.['pattern']">
+                  Ingrese un Email válido. Por ej: example@gmail.com
+                </div>
+                <div *ngIf="email.errors?.['required']">
+                  Ingrese un correo electrónico
+                </div>
+              </div>
+            </div>
+            <!---->
+            <div class="col-12 group-louk">
+              <label for="emailRepeat">Repita su Email</label>
+              <input
+                type="email"
+                class="form-control input-louk"
+                id="emailRepeat"
+                name="emailRepeat"
+                [(ngModel)]="emailR"
+                #emailRepeat="ngModel"
+                required
+              />
+              <i class="fa-solid fa-envelope form-icon"></i>
+            </div>
+            <!--VALIDACION REPEAT-->
+            <div class="col-12 group-louk">
+              <div *ngIf="emailRepeat.touched || emailRepeat.dirty">
+                <div
+                  class="alert alert-danger"
+                  *ngIf="!(cliente.email === emailR)"
+                >
+                  Los correos deben coincidir
+                </div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="emailRepeat.errors?.['required']"
+                >
+                  Ingrese un correo electrónico
+                </div>
+              </div>
+            </div>
+            <!---->
+            <div class="col-12 group-louk">
+              <label for="password">Contraseña</label>
+              <input
+                type="password"
+                class="form-control input-louk"
+                id="password"
+                [(ngModel)]="cliente.password"
+                name="password"
+                #password="ngModel"
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              />
+              <i class="fa-solid fa-eye-slash form-icon"></i>
+            </div>
+            <!--VALIDACION PASSWORD-->
+            <div class="col-12 group-louk">
+              <div
+                *ngIf="password.invalid && (password.touched || password.dirty)"
+                class="alert alert-danger"
+              >
+                <div *ngIf="password.errors?.['pattern']">
+                  La contraseña debe poseer al menos 8 caracteres, además de una
+                  minuscula, una mayúscula y un número.
+                </div>
+                <div *ngIf="password.errors?.['required']">
+                  Ingrese una contraseña
+                </div>
+              </div>
+            </div>
+            <!---->
+            <div class="col-12 group-louk">
+              <label for="passwordRepeat">Repita su Contraseña</label>
+              <input
+                type="password"
+                class="form-control input-louk"
+                id="passwordRepeat"
+                [(ngModel)]="passwordR"
+                name="passwordRepeat"
+                #passwordRepeat="ngModel"
+                required
+              />
+              <i class="fa-solid fa-eye-slash form-icon"></i>
+            </div>
+            <!-- VALIDACIÓN PASSWORD REPEAT -->
+            <div class="col-12 group-louk">
+              <div *ngIf="passwordRepeat.touched || passwordRepeat.dirty">
+                <div
+                  class="alert alert-danger"
+                  *ngIf="!(cliente.password === passwordR)"
+                >
+                  Las contraseñas deben coincidir
+                </div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="passwordRepeat.errors?.['required']"
+                >
+                  Ingrese una contraseña
+                </div>
+              </div>
+            </div>
+            <!---->
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group row">
+            <h3>Datos Personales</h3>
+            <div class="col-12 group-louk">
+              <label for="apellido">Apellido</label>
+              <input
+                type="text"
+                class="form-control input-louk"
+                id="apellido"
+                [(ngModel)]="cliente.apellido"
+                name="apellido"
+              />
+              <i class="fa-solid fa-earth-americas form-icon"></i>
+            </div>
+            <div class="col-12 group-louk">
+              <label for="nombre">Nombre</label>
+              <input
+                type="text"
+                class="form-control input-louk"
+                id="nombre"
+                [(ngModel)]="cliente.nombre"
+                name="nombre"
+              /><i class="fa-solid fa-earth-americas form-icon"></i>
+            </div>
+            <div class="col-12 group-louk">
+              <label for="selectPais">Pais</label>
+              <select
+                class="form-control input-louk"
+                id="pais"
+                name="pais"
+                aria-label="Default select example"
+                [(ngModel)]="cliente.pais"
+                #pais="ngModel"
+                required
+              >
+                <option *ngFor="let p of paises" [ngValue]="p.country_name">
+                  {{ p.country_name }}
+                </option>
+              </select>
+            </div>
+            <!--VALIDACION PAIS-->
+            <div class="col-12 group-louk">
+              <div
+                *ngIf="pais.invalid && (pais.touched || pais.dirty)"
+                class="alert alert-danger"
+              >
+                <div *ngIf="pais.errors?.['required']">Ingrese un pais</div>
+              </div>
+            </div>
+            <!---->
+            <h4>Télefono</h4>
+            <div class="col-4 group-louk">
+              <label for="codArea">Codigo de Area</label>
+              <input
+                type="number"
+                class="form-control input-louk"
+                id="codArea"
+                [(ngModel)]="cliente.codArea"
+                name="codArea"
+              />
+              <i class="fa-solid fa-earth-americas form-icon"></i>
+            </div>
+            <div class="col-8 group-louk">
+              <label for="telefono">Número</label>
+              <input
+                type="number"
+                class="form-control input-louk"
+                id="telefono"
+                [(ngModel)]="cliente.telefono"
+                name="telefono"
+              />
+              <i class="fa-solid fa-map form-icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group row">
+            <br />
+            <h3>Datos de la Cuenta</h3>
+            <div class="col-6 group-louk">
+              <label for="nickname">Nickname</label>
+              <input
+                type="text"
+                class="form-control input-louk"
+                id="nickname"
+                [(ngModel)]="cuenta.nickname"
+                name="nickname"
+                #nickname="ngModel"
+                required
+                minlength="4"
+              />
+              <i class="fa-solid fa-file-signature form-icon"></i>
+            </div>
+            <div class="col-6 group-louk">
+              <label for="fechaNacimiento">Fecha de Nacimiento</label>
+              <input
+                type="date"
+                class="form-control input-louk"
+                id="fechaNacimiento"
+                [(ngModel)]="cliente.fechaNacimiento"
+                name="fechaNacimiento"
+                #fechaNacimiento="ngModel"
+                required
+              />
+            </div>
+
+            <!-- Validaciones Datos de la Cuenta -->
+
+            <div class="col-6">
+              <div
+                *ngIf="nickname.invalid && (nickname.dirty || nickname.touched)"
+                class="alert alert-danger"
+              >
+                <div *ngIf="nickname.errors?.['required']">
+                  Nickname es requerido.
+                </div>
+                <div *ngIf="nickname.errors?.['minlength']">
+                  Su nickname debe tener al menos 4 caracteres.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div
+                *ngIf="
+                  fechaNacimiento.invalid &&
+                  (fechaNacimiento.dirty || fechaNacimiento.touched)
+                "
+                class="alert alert-danger"
+              >
+                <div *ngIf="fechaNacimiento.errors?.['required']">
+                  Fecha de nacimiento es requerido.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4 text-center input-file">
+          <img
+            [src]="files[0].base"
+            class="img-thumbnail"
+            style="max-width: 300px"
+          />
+          <label class="custom-file-upload">
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onFileSelected($event)"
+            />
+            Subir Foto de Perfil
+          </label>
+        </div>
+      </div>
+      <div>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-louk col-12"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          (click)="validarRegistro()"
+        >
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content modal-louk">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">{{ mensaje }}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          *ngIf="registrar"
+          type="button"
+          class="btn btn-louk"
+          data-bs-dismiss="modal"
+          (click)="clienteSubmit()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

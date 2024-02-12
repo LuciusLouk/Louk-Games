@@ -1,0 +1,39 @@
+<nav class="navbar border-bottom border-body navbar-expand-lg " data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="assets/icon.svg"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" >Tienda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page">Comunidad</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Editor
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" >Productos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item"  >Cliente</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" [routerLink]="['app-editor-signup']" >Editor</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <a style="color: aliceblue;" [routerLink]="['app-login']">Log in</a>
+        <span> / </span>
+        <a style="color: aliceblue;" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
+    </div>
+</nav>
+
+
+<app-modal-signup></app-modal-signup>

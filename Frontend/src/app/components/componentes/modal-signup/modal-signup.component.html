@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-louk" >
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Desea crear un usuario?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Elija el tipo de usuario que desea crear
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-louk" [routerLink]="['app-cliente-signup']" data-bs-dismiss="modal" >Cliente</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-louk" [routerLink]="['app-editor-signup']" data-bs-dismiss="modal" >Editor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,43 @@
+<section>
+    <div class="container card-louk mt-4 mb-4 pl-1 pt-3 pb-3">
+        <div class="row">
+            <div class="text-center col-7 p-4 mt-4" id="welcomeMsg">
+                <h2>Bienvenido</h2>
+                <img class="img-logo" src="assets/icon.svg" alt="logo de página" >
+            </div>
+            <div class="p-4 m-4 col-4">
+                <h2>Log in</h2>
+                <form (onSubmit)="login()">
+                    <div class="form-group group-louk">
+                        <label>Correo electrónico</label>
+                        <input
+                            name="email" 
+                            id="inputEmail" 
+                            type="email"  
+                            class="input-louk form-control"
+                        >
+                        <i class="fa-solid fa-envelope login-icon"></i>
+                    </div>
+                    <div class="form-group group-louk">
+                        <label>Password</label>
+                        <input
+                            name="password" 
+                            id="inputPassword" 
+                            type="password"  
+                            class="input-louk form-control"
+                        >
+                        <i class="fa-solid fa-eye-slash login-icon"></i>
+                    </div>
+                    <div>
+                        <button class="btn btn-louk form-control">Log in</button>
+                    </div>
+                </form>
+                <div>
+                    <span><a style="color: aliceblue;" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Presione aquí para registrarse</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-modal-signup></app-modal-signup>

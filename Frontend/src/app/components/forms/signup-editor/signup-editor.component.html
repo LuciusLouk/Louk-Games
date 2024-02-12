@@ -1,0 +1,386 @@
+<section>
+    <div class="card-louk m-4 p-5">
+      <form #editorForm="ngForm">
+        <h1 class="text-center">Registro Editor</h1>
+        <br />
+        <div class="row">
+          <div class="col-8">
+            <div class="form-group row">
+              <h3>Datos de Usuario</h3>
+              <div class="col-6 group-louk">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control input-louk"
+                  id="email"
+                  [(ngModel)]="editor.email"
+                  name="email"
+                  #email="ngModel"
+                  required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                />
+                <i class="fa-solid fa-envelope form-icon"></i>
+              </div>
+              <div class="col-6 group-louk">
+                <label for="emailRepeat">Repita su Email</label>
+                <input
+                  type="email"
+                  class="form-control input-louk"
+                  id="emailRepeat"
+                  name="emailRepeat"
+                  [(ngModel)]="emailR"
+                  #emailRepeat="ngModel"
+                  required
+                />
+                <i class="fa-solid fa-envelope form-icon"></i>
+              </div>
+  
+              <!--VALIDACION EMAIL-->
+              <div class="col-6 group-louk">
+                <div
+                  *ngIf="email.invalid && (email.touched || email.dirty)"
+                  class="alert alert-danger"
+                >
+                  <div *ngIf="email.errors?.['pattern']">
+                    Ingrese un Email válido. Por ej: example@gmail.com
+                  </div>
+                  <div *ngIf="email.errors?.['required']">
+                    Ingrese un correo electrónico
+                  </div>
+                </div>
+              </div>
+              <!---->
+  
+              <!--VALIDACION REPEAT-->
+              <div class="col-6 group-louk">
+                <div *ngIf="emailRepeat.touched || emailRepeat.dirty">
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="!(editor.email === emailR)"
+                  >
+                    Los correos deben coincidir
+                  </div>
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="emailRepeat.errors?.['required']"
+                  >
+                    Ingrese un correo electrónico
+                  </div>
+                </div>
+              </div>
+              <!---->
+              <div class="col-6 group-louk">
+                <label for="password">Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control input-louk"
+                  id="password"
+                  [(ngModel)]="editor.password"
+                  name="password"
+                  #password="ngModel"
+                  required
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                />
+                <i class="fa-solid fa-eye-slash form-icon"></i>
+              </div>
+              <div class="col-6 group-louk">
+                <label for="passwordRepeat">Repita su Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control input-louk"
+                  id="passwordRepeat"
+                  [(ngModel)]="passwordR"
+                  name="passwordRepeat"
+                  #passwordRepeat="ngModel"
+                  required
+                />
+                <i class="fa-solid fa-eye-slash form-icon"></i>
+              </div>
+              <!--VALIDACION PASSWORD-->
+              <div class="col-6 group-louk">
+                <div
+                  *ngIf="password.invalid && (password.touched || password.dirty)"
+                  class="alert alert-danger"
+                >
+                  <div *ngIf="password.errors?.['pattern']">
+                    La contraseña debe poseer al menos 8 caracteres, además de una
+                    minuscula, una mayúscula y un número.
+                  </div>
+                  <div *ngIf="password.errors?.['required']">
+                    Ingrese una contraseña
+                  </div>
+                </div>
+              </div>
+              <!---->
+              <!-- VALIDACIÓN PASSWORD REPEAT -->
+              <div class="col-6 group-louk">
+                <div *ngIf="passwordRepeat.touched || passwordRepeat.dirty">
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="!(editor.password === passwordR)"
+                  >
+                    Las contraseñas deben coincidir
+                  </div>
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="passwordRepeat.errors?.['required']"
+                  >
+                    Ingrese una contraseña
+                  </div>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group row">
+              <br />
+              <h3>Datos de la Empresa</h3>
+              <div class="col-12 group-louk">
+                <label for="nombreEmpresa">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control input-louk"
+                  id="nombreEmpresa"
+                  [(ngModel)]="editor.nombreEmpresa"
+                  name="nombreEmpresa"
+                  #nombreEmpresa="ngModel"
+                  required
+                  minlength="4"
+                />
+                <i class="fa-solid fa-file-signature form-icon"></i>
+              </div>
+  
+              <div class="col-12">
+                <div
+                  *ngIf="nombreEmpresa.invalid && (nombreEmpresa.dirty || nombreEmpresa.touched)"
+                  class="alert alert-danger"
+                >
+                  <div *ngIf="nombreEmpresa.errors?.['required']">
+                    El campo es requerido.
+                  </div>
+                  <div *ngIf="nombreEmpresa.errors?.['minlength']">
+                    El campo debe tener al menos 4 caracteres.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-12 group-louk">
+                <label for="tipoEmpresa">Tipo de Empresa</label>
+                <input
+                  type="text"
+                  class="form-control input-louk"
+                  id="tipoEmpresa"
+                  [(ngModel)]="editor.tipoEmpresa"
+                  name="tipoEmpresa"
+                  #tipoEmpresa="ngModel"
+                  required
+                  minlength="3"
+                />
+                <i class="fa-solid fa-building form-icon"></i>
+              </div>
+              
+              <div class="col-12">
+                <div
+                  *ngIf="tipoEmpresa.invalid && (tipoEmpresa.dirty || tipoEmpresa.touched)"
+                  class="alert alert-danger"
+                >
+                  <div *ngIf="tipoEmpresa.errors?.['required']">
+                    El campo es requerido.
+                  </div>
+                  <div *ngIf="tipoEmpresa.errors?.['minlength']">
+                    El campo debe tener al menos 4 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <h3>Dirección de la Empresa</h3>
+          <div class="col-4 group-louk">
+            <label for="selectPais">Pais</label>
+            <select
+              class="form-select input-louk"
+              id="selectPais"
+              name="pais"
+              aria-label="Default select example"
+              [(ngModel)]="editor.pais"
+              (change)="cargarProvincias()"
+              #pais="ngModel"
+              required
+            >
+              <option *ngFor="let p of paises" [ngValue]="p.country_name">
+                {{ p.country_name }}
+              </option>
+            </select>
+            <i class="fa-solid fa-earth-americas form-icon"></i>
+          </div>
+  
+          <div class="col-4 group-louk">
+            <label for="selectProvincia">Estado o Provincia</label>
+            <select
+              class="form-select input-louk"
+              id="selectProvincia"
+              name="provincia"
+              aria-label="Default select example"
+              [(ngModel)]="editor.estadoProvincia"
+              (change)="cargarCiudades()"
+              #provincia="ngModel"
+              required
+            >
+              <option *ngFor="let p of provincias" [ngValue]="p.state_name">
+                {{ p.state_name }}
+              </option>
+            </select>
+            <i class="fa-solid fa-map form-icon"></i>
+          </div>
+  
+          <div class="col-4 group-louk">
+            <label for="selectCiudad">Localidad</label>
+            <select
+              class="form-select input-louk"
+              id="selectCiudad"
+              name="ciudad"
+              aria-label="Default select example"
+              [(ngModel)]="editor.localidad"
+              #ciudad="ngModel"
+              required
+            >
+              <option *ngFor="let p of ciudades" [ngValue]="p.city_name">
+                {{ p.city_name }}
+              </option>
+            </select>
+            <i class="fa-solid fa-map-location-dot form-icon"></i>
+          </div>
+          <!--VALIDACIONES PAIS PROVINCIA CIUDAD-->
+          <div class="col-4 group-louk">
+            <div
+              *ngIf="pais.invalid && (pais.touched || pais.dirty)"
+              class="alert alert-danger">
+              <div *ngIf="pais.errors?.['required']">
+                Ingrese un pais
+              </div>
+            </div>
+          </div>
+          <div class="col-4 group-louk">
+            <div
+              *ngIf="provincia.invalid && (provincia.touched || provincia.dirty)"
+              class="alert alert-danger">
+              <div *ngIf="provincia.errors?.['required']">
+                Ingrese una provincia o estado
+              </div>
+            </div>
+          </div>
+          <div class="col-4 group-louk">
+            <div
+              *ngIf="ciudad.invalid && (ciudad.touched || ciudad.dirty)"
+              class="alert alert-danger">
+              <div *ngIf="ciudad.errors?.['required']">
+                Ingrese una ciudad
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-6 group-louk">
+            <label for="direccion">Dirección</label>
+            <input
+              type="text"
+              class="form-control input-louk"
+              id="direccion"
+              [(ngModel)]="editor.direccion"
+              name="direccion"
+              #direccion="ngModel"
+              required
+              minlength="4"
+            /><i class="fa-solid fa-location-dot form-icon"></i>
+          </div>
+          <div class="col-6 group-louk">
+            <label for="codPostal">Codigo Postal</label>
+            <input
+              type="number"
+              class="form-control input-louk"
+              id="codPostal"
+              [(ngModel)]="editor.codPostal"
+              name="codPostal"
+              #codPostal="ngModel"
+              required
+            /><i class="fa-solid fa-arrow-down-1-9 form-icon"></i>
+          </div>
+          <div class="col-6">
+            <div
+              *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="direccion.errors?.['required']">
+                El campo es requerido.
+              </div>
+              <div *ngIf="direccion.errors?.['minlength']">
+                El campo debe tener al menos 4 caracteres.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div
+              *ngIf="codPostal.invalid && (codPostal.dirty || codPostal.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="codPostal.errors?.['required']">
+                El campo es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div> 
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-louk col-12"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          (click)="validarRegistro()"
+          [disabled]="!editorForm.form.valid"
+        >
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content modal-louk">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">{{mensaje}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button *ngIf="registrar"
+          type="button"
+          class="btn btn-louk"
+          data-bs-dismiss="modal"
+          (click)="editorSubmit()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

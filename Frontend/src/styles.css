@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+#louk{
+    
+    background-image: url(assets/aurora.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+*.card-louk{
+    color: aliceblue;
+    /* background-color: rgba(127, 37, 128, 0.33); */
+    /* background-color:rgba(14, 68, 67, 0.76) */
+    /* background-color: rgba(97, 65, 14, 0.45);*/
+    /*
+    background-color: rgba(14, 41, 68, 0.356); 
+    */
+    backdrop-filter: blur(10px);
+    background-color:rgba(19, 49, 54, 0.664);
+}
+
+input.input-louk{ 
+    border-top: none;
+    border-left: none;
+    border-color: rgb(135, 198, 250);  
+    border-radius: 5px;
+    
+    background-color: rgba(67, 97, 92, 0.473);
+    color: aliceblue;
+    transition: ease-in-out,box-shadow .25s ease-in-out;
+    margin-bottom: 20px;
+}
+
+input.input-louk:focus {
+    box-shadow:  rgb(135, 198, 250) 2px 2px;
+    color: aliceblue;
+    background-color:rgba(60, 97, 104, 0.705);
+}
+
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0 1000px rgb(67, 97, 92) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+button.btn-louk {
+    color: aliceblue;
+    border-color: rgb(135, 198, 250);
+    border-width: 0px 1px 1px 0px;
+    background-color: rgba(5, 4, 19, 0.938);
+    box-shadow:  rgba(127, 37, 128, 0.33) 4px 4px;
+}
+
+button.btn-louk:hover, button.btn-louk:focus{
+    color: aliceblue;
+    border-color: rgb(135, 198, 250);
+    border-width: 1px 1px 1px 1px;
+    background-color: rgba(5, 4, 19, 0.938);
+    box-shadow:  none;
+}
+.img-logo{
+    width: 200px;
+}
+
+.group-louk{
+    position: relative;
+}
+i.login-icon{
+    position: absolute;
+    display: block;
+    bottom: .5rem;
+    right: 1rem;
+}
+i.form-icon{
+    position: absolute;
+    display: block;
+    bottom: 1.6rem;
+    right: 1.5rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+div.modal-louk{
+    color: aliceblue;
+    box-shadow:  rgba(127, 37, 128, 0.33) 3px 3px;
+    background-color: rgba(13, 21, 36, 0.966);
+
+}
+
+select.input-louk, select.input-louk:focus{
+    border-color: rgb(135, 198, 250);  
+    border-radius: 5px;
+    background-color: rgba(25, 31, 54, 0.288);
+    color: aliceblue;
+    transition: ease-in-out,box-shadow .25s ease-in-out;
+    margin-bottom: 20px;
+}
+
+option{
+    background-color: rgb(25, 31, 54);
+    color: aliceblue;
+}
